@@ -14,6 +14,7 @@ composeBom = "2024.04.01"
 navigationCompose = "2.8.1"
 navigationComposeHilt = "1.2.0"
 room = "2.6.1"
+uiTextGoogleFonts = "1.7.6"
 
 
 [libraries]
@@ -52,6 +53,7 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
