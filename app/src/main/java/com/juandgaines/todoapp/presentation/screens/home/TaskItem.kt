@@ -1,4 +1,4 @@
-package com.juandgaines.todoapp.presentation.home
+package com.juandgaines.todoapp.presentation.screens.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -37,9 +37,9 @@ fun TaskItem(
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
-        .clickable { onClickItem(task.id) }
-        .background(color = MaterialTheme.colorScheme.surfaceContainer)
-        .padding(horizontal = 8.dp))
+            .clickable { onClickItem(task.id) }
+            .background(color = MaterialTheme.colorScheme.surfaceContainer)
+            .padding(horizontal = 8.dp))
     {
         Checkbox(checked = task.isCompleted, onCheckedChange = { onToggleCompletion(task.id) })
         Column(
