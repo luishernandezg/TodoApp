@@ -55,9 +55,10 @@ fun HomeScreen(modifier: Modifier = Modifier, state: HomeDataState) {
                     modifier = Modifier.fillMaxSize()
                 )
             }, actions = {
-                Box(modifier = Modifier
-                    .padding(8.dp)
-                    .clickable { isMenuExpanded = true }) {
+                Box(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .clickable { isMenuExpanded = true }) {
                     Icon(
                         imageVector = Icons.Default.MoreVert,
                         contentDescription = "Add task",
@@ -79,7 +80,8 @@ fun HomeScreen(modifier: Modifier = Modifier, state: HomeDataState) {
             })
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = {},
+            FloatingActionButton(
+                onClick = {},
                 content = {
                     Icon(
                         imageVector = Icons.Default.Add,
@@ -96,7 +98,14 @@ fun HomeScreen(modifier: Modifier = Modifier, state: HomeDataState) {
                 ),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            item { SummaryInfo(date = state.date, taskSummary = state.summary) }
+            item {
+                SummaryInfo(
+                    date = state.date,
+                    taskSummary = state.summary,
+                    completedTasks = 5,
+                    totalTasks = 10,
+                )
+            }
             stickyHeader {
                 SectionTitle(
                     modifier = Modifier

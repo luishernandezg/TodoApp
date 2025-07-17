@@ -15,6 +15,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -51,11 +52,35 @@ fun HelloWorldPreview() {
 }
 
 @Composable
+fun CountView(modifier: Modifier = Modifier) {
+
+    var count by remember { mutableIntStateOf(0) }
+    Text(
+        text = "Count: $count",
+        fontSize = 30.sp,
+        fontWeight = FontWeight.Bold,
+        modifier = modifier
+            .clickable { count++ }
+            .padding(16.dp)
+    )
+}
+
+@Preview(
+    showBackground = true
+)
+@Composable
+fun CountViewExamplePreview() {
+    TodoAppTheme { CountView() }
+}
+
+
+@Composable
 fun ClickableTexExample(
     modifier: Modifier = Modifier
 ) {
     var text by remember { mutableStateOf("Click me!") }
-    Text(text = text,
+    Text(
+        text = text,
         fontSize = 16.sp,
         modifier = modifier.clickable { text = "This is a new Text!" })
 }
@@ -71,7 +96,7 @@ fun ClickableTexExamplePreview() {
 @Composable
 fun IconExample(
     modifier: Modifier = Modifier,
-    iconContainer: IconContainer = IconContainer(Icons.Default.Favorite)
+    iconContainer: IconContainer
 ) {
     Icon(
         imageVector = iconContainer.icon,
@@ -90,7 +115,7 @@ fun IconExample(
 )
 @Composable
 fun IconExamplePreview(@PreviewParameter(IconProvider::class) icon: IconContainer) {
-    TodoAppTheme { IconExample(iconContainer = icon ) }
+    TodoAppTheme { IconExample(iconContainer = icon) }
 }
 
 @Composable
@@ -101,7 +126,7 @@ fun RowView() {
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         HelloWorld()
-        IconExample()
+        IconExample(iconContainer = IconContainer(Icons.Default.Favorite))
     }
 }
 
@@ -120,7 +145,7 @@ fun ColumnView() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         HelloWorld()
-        IconExample()
+        IconExample(iconContainer = IconContainer(Icons.Default.Favorite))
     }
 }
 

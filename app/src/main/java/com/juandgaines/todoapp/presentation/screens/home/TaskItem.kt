@@ -56,7 +56,7 @@ fun TaskItem(
                 fontWeight = FontWeight.Bold,
                 style = MaterialTheme.typography.titleSmall.copy(
                     textDecoration =
-                    if (task.isCompleted) TextDecoration.LineThrough else TextDecoration.None
+                        if (task.isCompleted) TextDecoration.LineThrough else TextDecoration.None
                 ),
                 color = MaterialTheme.colorScheme.onPrimaryContainer
             )
