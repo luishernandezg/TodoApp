@@ -7,7 +7,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -44,22 +46,32 @@ fun SummaryInfo(
     Row(
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Column(modifier = modifier.padding(16.dp)) {
-            Text(
-                text = date,
-                style = MaterialTheme.typography.headlineLarge,
-                color = MaterialTheme.colorScheme.onBackground,
-                fontWeight = FontWeight.Bold,
+        Box(
+            modifier.width(
+                230.dp
             )
-            Text(
-                text = taskSummary,
-                style = MaterialTheme.typography.titleSmall,
-                color = MaterialTheme.colorScheme.onSurface
-            )
+        ) {
+            Column(modifier = modifier.padding(0.dp, 0.dp, 0.dp, 0.dp)) {
+                Text(
+                    text = date,
+                    style = MaterialTheme.typography.headlineLarge,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    fontWeight = FontWeight.Bold,
+                )
+                Text(
+                    text = taskSummary,
+                    style = MaterialTheme.typography.titleSmall,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+            }
+
         }
         Box(
+
             contentAlignment = Alignment.Center,
             modifier = Modifier
+                .width(150.dp)
+                .height(150.dp)
                 .padding(16.dp)
                 .aspectRatio(1f)
         ) {

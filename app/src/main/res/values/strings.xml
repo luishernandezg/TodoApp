@@ -3,4 +3,7 @@
     <string name="delete_all">Delete All</string>
     <string name="completed_task">Completed Task</string>
     <string name="pending_task">Pending Task</string>
+    <string name="delete_task">Delete task</string>
+    <string name="update_task">Update Task</string>
+    <string name="delete_all_task">All task deleted</string>
 </resources>
