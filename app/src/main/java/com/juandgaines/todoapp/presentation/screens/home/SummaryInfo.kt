@@ -3,13 +3,12 @@ package com.juandgaines.todoapp.presentation.screens.home
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -19,9 +18,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.juandgaines.todoapp.R
 import com.juandgaines.todoapp.ui.theme.TodoAppTheme
 
 @Composable
@@ -44,41 +45,43 @@ fun SummaryInfo(
 
     }
     Row(
-        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Box(
-            modifier.width(
-                230.dp
-            )
+        Column(
+            modifier = Modifier
+                .weight(1.5f)
+                .padding(16.dp).
+            background(MaterialTheme.colorScheme.error)
         ) {
-            Column(modifier = modifier.padding(0.dp, 0.dp, 0.dp, 0.dp)) {
-                Text(
-                    text = date,
-                    style = MaterialTheme.typography.headlineLarge,
-                    color = MaterialTheme.colorScheme.onBackground,
-                    fontWeight = FontWeight.Bold,
-                )
-                Text(
-                    text = taskSummary,
-                    style = MaterialTheme.typography.titleSmall,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-            }
+            Text(
+                text = date,
+                style = MaterialTheme.typography.headlineLarge,
+                color = MaterialTheme.colorScheme.onBackground,
+                fontWeight = FontWeight.Bold
+            )
 
+            Text(
+                text = stringResource(R.string.summary_info, taskSummary),
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.onSurface,
+            )
         }
         Box(
-
             contentAlignment = Alignment.Center,
             modifier = Modifier
-                .width(150.dp)
-                .height(150.dp)
                 .padding(16.dp)
                 .aspectRatio(1f)
+                .weight(1f).
+                background(MaterialTheme.colorScheme.primary)
         ) {
             val colorBase = MaterialTheme.colorScheme.inversePrimary
-            val colorProgress = MaterialTheme.colorScheme.primary
+            val progress = MaterialTheme.colorScheme.primary
             val strokeWidth = 16.dp
-            Canvas(modifier = Modifier.aspectRatio(1f)) {
+
+            Canvas(
+                modifier = Modifier.aspectRatio(1f)
+            ) {
                 drawArc(
                     color = colorBase,
                     startAngle = 0f,
@@ -88,27 +91,29 @@ fun SummaryInfo(
                     style = Stroke(
                         width = strokeWidth.toPx(),
                         cap = StrokeCap.Round
-                    ),
+                    )
                 )
+
                 if (completedTasks <= totalTasks) {
                     drawArc(
-                        color = colorProgress,
+                        color = progress,
                         startAngle = 90f,
-                        sweepAngle = (360f * angleRatio.value),
+                        sweepAngle = 360f * angleRatio.value,
                         useCenter = false,
                         size = size,
                         style = Stroke(
                             width = strokeWidth.toPx(),
                             cap = StrokeCap.Round
-                        ),
+                        )
                     )
                 }
             }
+
             Text(
-                text = "${(completedTasks / totalTasks.toFloat() * 100).toInt()}%",
+                text = "${(completedTasks / totalTasks.toFloat()).times(100).toInt()}%",
                 style = MaterialTheme.typography.headlineLarge,
                 color = MaterialTheme.colorScheme.onSurface,
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.Bold
             )
         }
     }

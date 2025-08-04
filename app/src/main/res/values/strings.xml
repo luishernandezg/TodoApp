@@ -6,4 +6,5 @@
     <string name="delete_task">Delete task</string>
     <string name="update_task">Update Task</string>
     <string name="delete_all_task">All task deleted</string>
+    <string name="summary_info">You have %s pending tasks</string>
 </resources>
