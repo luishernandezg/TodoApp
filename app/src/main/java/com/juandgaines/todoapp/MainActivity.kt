@@ -15,7 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.juandgaines.todoapp.presentation.screens.detail.TaskScreen
+import com.juandgaines.todoapp.presentation.screens.detail.TaskScreenRoot
 import com.juandgaines.todoapp.presentation.screens.detail.TaskScreenState
 import com.juandgaines.todoapp.ui.theme.TodoAppTheme
 
@@ -27,9 +27,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             TodoAppTheme() {
 //                HomeScreenRoot()
-                TaskScreen(
-                    state = TaskScreenState()
-                )
+                TaskScreenRoot()
             }
 
         }

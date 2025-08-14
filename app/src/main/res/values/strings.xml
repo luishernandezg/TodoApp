@@ -13,4 +13,6 @@
     <string name="task_name">Task name</string>
     <string name="task_description">Task description</string>
     <string name="save">Save</string>
+    <string name="task_save">Task save</string>
+    <string name="task_saved">Task Saved</string>
 </resources>
