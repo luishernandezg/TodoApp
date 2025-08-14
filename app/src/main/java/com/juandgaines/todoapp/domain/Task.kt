@@ -1,9 +1,12 @@
 package com.juandgaines.todoapp.domain
 
+import java.time.LocalDateTime
+
 data class Task(
     val id: String,
     val title: String,
     val description: String,
     val isCompleted: Boolean = false,
-    val category: Category = Category.OTHER
+    val category: Category = Category.OTHER,
+    val date: LocalDateTime = LocalDateTime.now()
 )

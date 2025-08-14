@@ -51,8 +51,8 @@ fun SummaryInfo(
         Column(
             modifier = Modifier
                 .weight(1.5f)
-                .padding(16.dp).
-            background(MaterialTheme.colorScheme.error)
+                .padding(16.dp)
+
         ) {
             Text(
                 text = date,
@@ -72,8 +72,7 @@ fun SummaryInfo(
             modifier = Modifier
                 .padding(16.dp)
                 .aspectRatio(1f)
-                .weight(1f).
-                background(MaterialTheme.colorScheme.primary)
+                .weight(1f)
         ) {
             val colorBase = MaterialTheme.colorScheme.inversePrimary
             val progress = MaterialTheme.colorScheme.primary

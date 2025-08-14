@@ -45,6 +45,7 @@ class TaskViewModel : ViewModel() {
                     )
                     fakeTaskLocalDataSource.addTask(task)
                     eventChannel.send(TaskEvent.TaskCreated)
+                    
                 }
 
                 else -> Unit

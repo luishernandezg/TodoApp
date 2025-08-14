@@ -15,8 +15,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.juandgaines.todoapp.presentation.screens.detail.TaskScreenRoot
-import com.juandgaines.todoapp.presentation.screens.detail.TaskScreenState
+import androidx.navigation.compose.rememberNavController
+import com.juandgaines.todoapp.navigation.NavigationRoot
 import com.juandgaines.todoapp.ui.theme.TodoAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,8 +26,10 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             TodoAppTheme() {
-//                HomeScreenRoot()
-                TaskScreenRoot()
+                val navController = rememberNavController()
+                NavigationRoot(
+                    navController = navController
+                )
             }
 
         }

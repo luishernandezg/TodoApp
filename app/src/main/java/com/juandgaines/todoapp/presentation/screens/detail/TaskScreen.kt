@@ -52,7 +52,7 @@ import com.juandgaines.todoapp.domain.Category
 import com.juandgaines.todoapp.ui.theme.TodoAppTheme
 
 @Composable
-fun TaskScreenRoot() {
+fun TaskScreenRoot(navigateBack: () -> Boolean) {
     val viewModel = viewModel<TaskViewModel>()
     val state = viewModel.state
     val event = viewModel.events
@@ -67,12 +67,25 @@ fun TaskScreenRoot() {
                         context.getString(R.string.task_saved),
                         Toast.LENGTH_SHORT
                     ).show()
+                    navigateBack()
                 }
+
 
             }
         }
     }
-    TaskScreen(state = state, onActionTask = viewModel::onAction)
+    TaskScreen(state = state, onActionTask = { action ->
+        when (action) {
+            ActionTask.Back -> {
+                navigateBack()
+            }
+
+            else -> {
+                viewModel.onAction(action)
+            }
+        }
+
+    })
 
 }
 
@@ -105,7 +118,7 @@ fun TaskScreen(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Back",
                         tint = MaterialTheme.colorScheme.onSurface,
-                        modifier = Modifier.clickable{
+                        modifier = Modifier.clickable {
                             onActionTask(ActionTask.Back)
                         }
                     )

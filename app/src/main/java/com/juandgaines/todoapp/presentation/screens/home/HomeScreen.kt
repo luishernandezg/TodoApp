@@ -47,7 +47,7 @@ import com.juandgaines.todoapp.presentation.screens.home.providers.HomeScreenPre
 import com.juandgaines.todoapp.ui.theme.TodoAppTheme
 
 @Composable
-fun HomeScreenRoot() {
+fun HomeScreenRoot(navigateToTaskScreen: () -> Unit) {
     val viewModel = viewModel<HomeScreenViewModel>()
     val state = viewModel.state
     val event = viewModel.events
@@ -70,6 +70,21 @@ fun HomeScreenRoot() {
             }
         }
     }
+    HomeScreen(
+        state = state,
+        onAction = { action ->
+            when (action) {
+                HomeScreenAction.OnAddTask -> {
+                    navigateToTaskScreen()
+                }
+
+                else -> {
+                    viewModel.onAction(action)
+                }
+            }
+
+        }
+    )
 
 
 }
@@ -122,7 +137,9 @@ fun HomeScreen(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = {},
+                onClick = {
+                    onAction(HomeScreenAction.OnAddTask)
+                },
                 content = {
                     Icon(
                         imageVector = Icons.Default.Add,
