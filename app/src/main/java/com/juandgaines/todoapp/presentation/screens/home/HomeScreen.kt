@@ -47,7 +47,7 @@ import com.juandgaines.todoapp.presentation.screens.home.providers.HomeScreenPre
 import com.juandgaines.todoapp.ui.theme.TodoAppTheme
 
 @Composable
-fun HomeScreenRoot(navigateToTaskScreen: () -> Unit) {
+fun HomeScreenRoot(navigateToTaskScreen: (String?) -> Unit) {
     val viewModel = viewModel<HomeScreenViewModel>()
     val state = viewModel.state
     val event = viewModel.events
@@ -56,6 +56,7 @@ fun HomeScreenRoot(navigateToTaskScreen: () -> Unit) {
     LaunchedEffect(true) {
         event.collect { event ->
             when (event) {
+
                 HomeScreenEvent.DeleteAllTasks -> {
                     Toast.makeText(context, R.string.delete_all_task, Toast.LENGTH_SHORT).show()
                 }
@@ -74,8 +75,12 @@ fun HomeScreenRoot(navigateToTaskScreen: () -> Unit) {
         state = state,
         onAction = { action ->
             when (action) {
+                is HomeScreenAction.OnClickTask -> {
+                    navigateToTaskScreen(action.taskId)
+                }
+
                 HomeScreenAction.OnAddTask -> {
-                    navigateToTaskScreen()
+                    navigateToTaskScreen(null)
                 }
 
                 else -> {
@@ -183,7 +188,9 @@ fun HomeScreen(
                         )
                     ),
                     task = task,
-                    onClickItem = {},
+                    onClickItem = {
+                        onAction(HomeScreenAction.OnClickTask(task.id))
+                    },
                     onDeleteItem = { onAction(HomeScreenAction.OnDeleteTask(task)) },
                     onToggleCompletion = {
                         onAction(HomeScreenAction.OnToggleTask(task))
@@ -212,7 +219,7 @@ fun HomeScreen(
                     ),
                     task = task,
                     onClickItem = {
-
+                        onAction(HomeScreenAction.OnClickTask(task.id))
                     },
                     onDeleteItem = { onAction(HomeScreenAction.OnDeleteTask(task)) },
                     onToggleCompletion = {

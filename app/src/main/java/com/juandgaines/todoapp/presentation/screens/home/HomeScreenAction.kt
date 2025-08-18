@@ -7,5 +7,6 @@ sealed interface HomeScreenAction {
     data class OnDeleteTask(val task: Task) : HomeScreenAction
     data object OnDeleteAllTasks : HomeScreenAction
     data object OnAddTask : HomeScreenAction
+    data class OnClickTask(val taskId: String) : HomeScreenAction
 
 }

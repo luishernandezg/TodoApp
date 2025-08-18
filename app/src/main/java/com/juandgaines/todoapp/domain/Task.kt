@@ -8,5 +8,5 @@ data class Task(
     val description: String,
     val isCompleted: Boolean = false,
     val category: Category = Category.OTHER,
-    val date: LocalDateTime = LocalDateTime.now()
+    val date: LocalDateTime = LocalDateTime.now(),
 )
