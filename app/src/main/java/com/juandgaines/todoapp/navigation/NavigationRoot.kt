@@ -9,25 +9,29 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.juandgaines.todoapp.presentation.screens.detail.TaskScreenRoot
 import com.juandgaines.todoapp.presentation.screens.home.HomeScreenRoot
+import kotlinx.serialization.Serializable
 
 
 @Composable
-fun NavigationRoot(navController: NavHostController) {
-    Box(modifier = Modifier.fillMaxSize())
-    {
+fun NavigationRoot(
+    navController: NavHostController
+) {
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ) {
         NavHost(
             navController = navController,
-            startDestination = Screen.HomeScreenDes.route,
-        )
-        {
-            composable(route = Screen.HomeScreenDes.route) {
+            startDestination = HomeScreenDes
+        ) {
+            composable<HomeScreenDes> {
                 HomeScreenRoot(
                     navigateToTaskScreen = {
-                        navController.navigate(Screen.TaskScreenDes.route)
+                        navController.navigate(TaskScreenDes)
                     }
                 )
             }
-            composable(route = Screen.TaskScreenDes.route) {
+
+            composable<TaskScreenDes> {
                 TaskScreenRoot(
                     navigateBack = {
                         navController.navigateUp()
@@ -39,8 +43,8 @@ fun NavigationRoot(navController: NavHostController) {
 }
 
 
-enum class Destinations { HOME, TASK, }
-sealed class Screen(val route: String) {
-    object HomeScreenDes : Screen(Destinations.HOME.name)
-    object TaskScreenDes : Screen(Destinations.TASK.name)
-}
+@Serializable
+object HomeScreenDes
+
+@Serializable
+object TaskScreenDes
