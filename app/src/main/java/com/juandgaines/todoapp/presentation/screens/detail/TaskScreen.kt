@@ -46,14 +46,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.juandgaines.todoapp.R
 import com.juandgaines.todoapp.domain.Category
 import com.juandgaines.todoapp.ui.theme.TodoAppTheme
 
 @Composable
-fun TaskScreenRoot(navigateBack: () -> Boolean) {
-    val viewModel = viewModel<TaskViewModel>()
+fun TaskScreenRoot(
+    navigateBack: () -> Boolean,
+    viewModel: TaskViewModel
+) {
+
     val state = viewModel.state
     val event = viewModel.events
 

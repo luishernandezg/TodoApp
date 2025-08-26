@@ -40,15 +40,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.juandgaines.todoapp.R
 import com.juandgaines.todoapp.domain.Task
 import com.juandgaines.todoapp.presentation.screens.home.providers.HomeScreenPreviewProvider
 import com.juandgaines.todoapp.ui.theme.TodoAppTheme
 
 @Composable
-fun HomeScreenRoot(navigateToTaskScreen: (String?) -> Unit) {
-    val viewModel = viewModel<HomeScreenViewModel>()
+fun HomeScreenRoot(
+    navigateToTaskScreen: (String?) -> Unit,
+    viewModel: HomeScreenViewModel
+) {
+
     val state = viewModel.state
     val event = viewModel.events
     val context = LocalContext.current

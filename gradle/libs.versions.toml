@@ -17,6 +17,7 @@ room = "2.6.1"
 uiTextGoogleFonts = "1.7.6"
 navigationRuntimeAndroid = "2.9.3"
 navigationComposeAndroid = "2.9.3"
+roomCommonJvm = "2.7.2"
 
 
 [libraries]
@@ -58,6 +59,7 @@ room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "
 androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
 androidx-navigation-runtime-android = { group = "androidx.navigation", name = "navigation-runtime-android", version.ref = "navigationRuntimeAndroid" }
 androidx-navigation-compose-android = { group = "androidx.navigation", name = "navigation-compose-android", version.ref = "navigationComposeAndroid" }
+androidx-room-common-jvm = { group = "androidx.room", name = "room-common-jvm", version.ref = "roomCommonJvm" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

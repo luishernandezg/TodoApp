@@ -4,14 +4,14 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.compose.compiler)
     //alias(libs.plugins.dagger.hilt)
-    //alias(libs.plugins.room)
-    //alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
+    alias(libs.plugins.ksp)
 }
-/*
+
 room {
     schemaDirectory("$projectDir/schemas")
 }
-*/
+
 
 android {
     namespace = "com.juandgaines.todoapp"
@@ -74,13 +74,14 @@ dependencies {
     implementation(libs.androidx.ui.text.google.fonts)
     implementation(libs.androidx.navigation.runtime.android)
     implementation(libs.androidx.navigation.compose.android)
+    implementation(libs.androidx.room.common.jvm)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
     //Librerias Room
-    //implementation(libs.room.ktx)
-    //implementation(libs.room.runtime)
-    //ksp(libs.room.compiler)
+    implementation(libs.room.ktx)
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
 
     //Librerias Dagger Hilt
     //implementation(libs.dagger.hilt.navigation.compose)
